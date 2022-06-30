@@ -1,0 +1,84 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!--nav bar-->
+<!--end section of nav bar-->
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <!-- <li>{{ message }}</li> -->
+    <li {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="container  mt-5">
+    <div class="row">
+        <div class="col">
+            <h4 class="text-capitalize">{{article.title}}</h4>
+            <br>
+            <div class="border rounded p-3">
+                <br>
+                <div class="mb-3">
+                    <p class="font-weight-bold">{{article.body}}</p>
+                </div>
+                <div class="m-2">
+                    {% for tag in article.tags.all %}
+                    <span class="badge bg-info text-opacity-25">{{ tag.tag_name }}</span>
+                    {% endfor %}
+                </div>
+                <div class="d-flex justify-content-end">
+                    {% if article.user.id == request.session.loginID %}
+                    <div class="ml-auto "><a href="/delete/{{article.id}}" class="btn btn-secondary m-1 p-2"
+                            id="del_update">delete</a></div>
+                    <div class="ml-auto "><a href="/editarticle/{{article.id}}" class="btn btn-secondary m-1 p-2"
+                            id="del_update">update</a></div>
+                    {% endif %}
+                </div>
+            </div>
+            <br>
+            <!-- Comment side -->
+            <br>
+            <div class="">
+                <hr style="width:100%">
+                <h5>Comments:</h5>
+                <br>
+                {% for comment in article.comments.all %}
+                <div class="border rounded m-1 p-3">
+                    <h6>{{ comment.comment }}</h6>
+                    <p class="text-secondary text-opacity-60 text-end">{{ comment.user_id.First_Name }} {{comment.user_id.Last_Name }} - <small>{{ comment.created_at }}</small> </p>
+                </div>
+                {% endfor %}
+            </div>
+            <br>
+            <br>
+            <form action="/comment" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="hidden" name="msg_id" value="{{ article.id }}">
+                    <textarea class="form-control" id="post_box" rows="2" name="comment"></textarea>
+                </div>
+                <div class="d-flex flex-row justify-content-between">
+                    <div class="d-flex ">
+                        <div class=""><button type="submit" class="btn btn-dark float-right m-2" id="post_com">Post a
+                                comment</button></div>
+            </form>
+            <form action="/like" method="post" class="p-2 m-1">
+                {% csrf_token %}
+                <input type="hidden" name="article_id" value="{{article.id}}">
+                {% if user not in article.liked.all %}
+                <button class="ui botton rounded" type="submit" id="like_btn"><i class="fa fa-thumbs-up"></i>
+                    Like</button>
+                {% else %}
+                <button class="ui botton rounded" type="submit" id="like_btn"><i class="fa fa-thumbs-down"></i>
+                    Unlike</button>
+                {% endif %}
+                <strong>{{article.liked.all.count}} Likes</strong>
+            </form>
+        </div>
+    </div>
+</div>
+</div>
+</div>
+</div>
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <!-- <li>{{ message }}</li> -->
+  <li {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+<div class="container  mt-5">
+  <div class="row">
+    <div class="col">
+      <h1>Add Article</h1>
+      <form action="/add_article" method="post">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">Title</label>
+          <input type="text" name="title" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">body</label>
+          <textarea class="form-control" name="body" id="" cols="30" rows="10"></textarea>
+        </div>
+        <input class="badge bg-warning text-opacity-25" id="demo-2" name="tags" type="text" value="html"
+          placeholder="Enter something" />
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary" id="btn_add">add</button>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+
+
+
+{% block scripts %}
+<script>
+  var secondElement = new Choices('#demo-2', {
+    allowSearch: true,
+    delimiter: ',',
+    editItems: true,
+    maxItems: 5,
+    removeButton: true
+  });
+
+</script>
+{% endblock %}

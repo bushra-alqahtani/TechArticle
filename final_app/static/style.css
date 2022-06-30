@@ -1,0 +1,110 @@
+#all_tags_div{
+    padding-left: 6px;
+}
+#all_article_div{
+    padding-right: 6px;
+}
+#tag_article{
+    display: flex;
+    margin: 7px;
+}
+hr{
+    width: 90%;
+    color: rgb(102, 102, 102);
+    height: 3px;
+    background-color: rgb(102, 102, 102);
+}
+h1,h2,h3,h4,h5,h6,p, a, label{
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(102, 102, 102);
+}
+a{
+    text-decoration: none;
+}
+#all{
+    color: brown;
+    
+}
+#more{
+    background-color: brown;
+}
+#nav_hover:hover{
+    color: brown;
+}
+#hello_text{
+    font-size: large;
+    font-weight: bold;
+}
+a:hover{
+    color: brown;
+}
+#website_name{
+    color: #a52a2a;
+    font-weight: bold;
+}
+.d-flex {
+    display: flex;
+    justify-content: flex-end;
+}
+#del_update{
+    background-color: white;
+    color: #a52a2a;
+    border: #a52a2a solid 1px;
+    float: left;
+}
+#del_update:hover{
+    color: white;
+    background-color: #a52a2a;
+    border: brown solid 1px;
+}
+#post_com{
+    background-color: #a52a2a;
+    border: #a52a2a;
+}
+#btn_edit{
+    background-color: #a52a2a;
+    border: #a52a2a;
+    margin-bottom: 10px;
+}
+#btn_add{
+    background-color: #a52a2a;
+    border: #a52a2a;
+    margin-bottom: 10px;
+}
+#demo-2{
+    background-color:#a52a2a;
+}
+#like_btn{
+    background-color: white;
+    border: black solid 1px;
+}
+#body{
+    background: url('/static/img/uni.jpg');
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+
+.item{
+    background-color: rgba(0, 0, 0, 0.488);
+}
+
+#welcome_text{
+    margin-top: 15%;
+    
+    padding: 10px;
+    
+    
+}
+#welcom_btn{
+    border: solid 1px white;
+
+}
+#welcom_btn:hover{
+    border: #a52a2a;
+    background-color: #a52a2a;
+ 
+ }
+ #welcome_website_name{
+    background-color: white ;
+    color:brown ;
+ }

@@ -1,0 +1,66 @@
+{% extends 'baseLogin.html' %}
+{% block content %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<!--register side -->
+
+<div class="container ">
+    <div class="row ">
+        <div class="col border rounded m-2 p-2 bg-white">
+            <h1>register</h1>
+            <form action="/register" method="post">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">First Name</label>
+                    <input type="text" name="First_Name" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Last Name</label>
+                    <input type="text" name="Last_Name" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="email" name="Email" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" name="Password" class="form-control" id="exampleInputPassword1">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Confirm Password:</label>
+                    <input type="password" name="Password2" class="form-control" id="exampleInputPassword1">
+                </div>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary">sign up</button>
+            </form>
+        </div>
+
+
+        <!--login side -->
+        <div class="col border rounded m-2 p-2 bg-white">
+            <h1>log in </h1>
+            <form action="/login" method="post">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Email</label>
+                    <input type="email" name="Email" class="form-control" id="exampleInputEmail1"
+                        aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" name="Password" class="form-control" id="exampleInputPassword1">
+                </div>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-secondary">login</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

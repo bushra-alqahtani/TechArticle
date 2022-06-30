@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<!--end section of nav bar-->
+<!--start body-->
+
+{% if messages %}
+<ul class="messages">
+  {% for message in messages %}
+  <!-- <li>{{ message }}</li> -->
+  <li {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+  {% endfor %}
+</ul>
+{% endif %}
+<h6 class="m-3 font-weight-bolder" id="hello_text">Hello {{ loginUser.First_Name}} {{ loginUser.Last_Name}} !</h6>
+<div class="" id="tag_article">
+  <br>
+  <!--articles side-->
+  <!--Tags side-->
+
+  <div class="col-2  " id="all_tags_div">
+    <hr>
+    <h5 id="all">All Tags</h5>
+    <ul class="list-group" style="list-style: none;">
+      {% for tag in tags %}
+      <li class="text-left">
+        <a href="/tag/{{ tag.id }}">{{tag.tag_name}}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="col-10 pl-5" id="all_article_div">
+    <hr>
+    <h5 id="all">All Articles</h5>
+    {% for article in articles%}
+    <div class="card ">
+      <div class="card-body">
+        <h5>{{article.title}}</h5>
+        <p class="card-text">{{article.user.First_Name}} {{article.user.Last_Name}}</p>
+        <a href="/show_article/{{article.id}} " id="more" class="btn btn-secondary">more</a>
+      </div>
+    </div>
+    <br>
+    {% endfor %}
+  </div>
+</div>
+</div>
+{% endblock %}

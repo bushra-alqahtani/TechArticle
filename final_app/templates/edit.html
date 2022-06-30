@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<!--nav bar-->
+
+<!--end section of nav bar-->
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <!-- <li>{{ message }}</li> -->
+    <li {% if message.tags %} class="alert alert-{{ message.tags }}" {% endif %}>{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div class="container  mt-5">
+    <div class="row">
+        <div class="col">
+            <h1>edit Article</h1>
+            <form action="/editarticle/{{article.id}}" method="post">
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Title</label>
+                    <input value="{{article.title}}" type="text" name="title" class="form-control text-secondary"
+                        id="exampleInputEmail1" aria-describedby="emailHelp">
+                </div>
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">body</label>
+                    <textarea value="{{article.body}}" class="form-control" name="body" id="" cols="30"
+                        rows="10"></textarea>
+                </div>
+                {% csrf_token %}
+                <button type="submit" class="btn btn-primary" id="btn_edit">edit</button>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
